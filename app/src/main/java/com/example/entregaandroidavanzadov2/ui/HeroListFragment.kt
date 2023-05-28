@@ -42,10 +42,9 @@ class HeroListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val adapter = SuperHeroAdapter(){ heroID: String ->
             findNavController().navigate(
-                HeroListFragmentDirections.actionFirstFragmentToSecondFragment(
+                HeroListFragmentDirections.actionListFragmentToDetailFragment(
                     heroID
                 )
             )
@@ -57,7 +56,6 @@ class HeroListFragment : Fragment() {
 
         viewModel.heros.observe(viewLifecycleOwner){ heros ->
             adapter.submitList(heros)
-            Log.d("TAG", "llego despues de navegar al fragment")
         }
     }
 

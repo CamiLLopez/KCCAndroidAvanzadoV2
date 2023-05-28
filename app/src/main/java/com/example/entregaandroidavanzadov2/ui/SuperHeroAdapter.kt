@@ -23,7 +23,6 @@ class SuperHeroAdapter(private val onClick: (String)-> (Unit)):
         holder.bind(getItem(position))
     }
 
-
     inner class SuperHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val heroName = itemView.findViewById<TextView>(R.id.hero_name)
@@ -48,7 +47,6 @@ class SuperHeroAdapter(private val onClick: (String)-> (Unit)):
             return oldItem.id == newItem.id
 
         }
-
         override fun areContentsTheSame(oldItem: SuperHero, newItem: SuperHero): Boolean {
             return oldItem == newItem
         }

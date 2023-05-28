@@ -7,7 +7,11 @@
     <TextView
         android:id="@+id/hero_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textAlignment="viewStart"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
 
 </FrameLayout>

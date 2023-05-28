@@ -15,6 +15,9 @@ import javax.inject.Inject
 @HiltViewModel
 class HerosViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
+    private val _locationResult = MutableLiveData<Boolean>()
+    val locationResult: LiveData<Boolean> = _locationResult
+
     private val _heros = MutableLiveData<List<SuperHero>>()
     val heros: LiveData<List<SuperHero>> get() = _heros
 
@@ -24,8 +27,31 @@ class HerosViewModel @Inject constructor(private val repository: Repository): Vi
             val result = withContext(Dispatchers.IO) {
                 repository.getHeros()
             }
-
             _heros.value = result
+        }
+    }
+
+    fun getLocationsByHero(heroID: String){
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                repository.getLocations(heroID)
+
+                }
+                result.let {
+                    _locationResult.postValue(result != null)
+                }
+        }
+    }
+
+    fun getHero(heroID: String) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                //repository.getHero(heroID)
+
+            }
+            result.let {
+                _locationResult.postValue(result != null)
+            }
         }
     }
 }

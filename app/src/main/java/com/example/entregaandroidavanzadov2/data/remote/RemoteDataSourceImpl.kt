@@ -11,10 +11,11 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, private val loginAPI: ILoginAPI): RemoteDataSource {
 
-    var heroID = "Algo q ue no se aun"
-    private var token = "Bearer eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJpZGVudGlmeSI6IjFFQzk5RDAzLTRDMTMtNEZFNS1CMERBLUJCQjQxRkFFMzdERiIsImVtYWlsIjoiY2FtaWxhbGxvcGV6OTVAZ21haWwuY29tIiwiZXhwaXJhdGlvbiI6NjQwOTIyMTEyMDB9.mCt5VQOCzuB4cdv8sm_RDmEGoINTeS3tCZlZ2l2pLYY"
+    private lateinit var heroID: String
+    override lateinit var token: String
+
     override suspend fun getHeros(): List<GetHerosResponse> {
-        return api.getHeroes(token, GetHerosRequestBody())
+        return api.getHeroes("Bearer $token", GetHerosRequestBody())
     }
 
     override suspend fun login(credentials: String): Response<String> {
@@ -22,10 +23,10 @@ class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, 
     }
 
     override suspend fun favouriteHero() {
-        return api.favouriteHero(FavouriteHeroRequestBody(heroID))
+        return api.favouriteHero("Bearer $token", FavouriteHeroRequestBody(heroID))
     }
 
-    override suspend fun getHeroLocations(): List<GetHeroLocationResponse> {
-        return api.getHeroLocations(GetHeroLocationRequestBody(heroID))
+    override suspend fun getHeroLocations(heroID: String): List<GetHeroLocationResponse> {
+        return api.getHeroLocations("Bearer $token", GetHeroLocationRequestBody(heroID))
     }
 }

@@ -5,6 +5,7 @@ import com.example.entregaandroidavanzadov2.data.MappingClasses.LocalToSuperHero
 import com.example.entregaandroidavanzadov2.data.MappingClasses.RemoteToLocalMapper
 import com.example.entregaandroidavanzadov2.data.local.ILocalDataSource
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSource
+import com.example.entregaandroidavanzadov2.data.remote.Response.GetHeroLocationResponse
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
@@ -23,4 +24,10 @@ class RepositoryImpl @Inject constructor(
         }
         return localToSuperHeroMapper.mapLocalToSuperHeros(localDataSource.getHeros())
     }
+
+    override suspend fun getLocations(heroID: String): List<GetHeroLocationResponse> {
+
+        return remoteDataSource.getHeroLocations(heroID)
+    }
+
 }

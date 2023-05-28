@@ -17,8 +17,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repository : RepositoryLogin): ViewModel() {
 
     private val _loginResult = MutableLiveData<Boolean>()
-    val loginResult: LiveData<Boolean>
-        get() = _loginResult
+    val loginResult: LiveData<Boolean> = _loginResult
 
 
     fun login(user: String, password: String){

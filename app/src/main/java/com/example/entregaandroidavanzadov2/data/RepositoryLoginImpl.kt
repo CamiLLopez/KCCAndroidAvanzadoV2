@@ -12,6 +12,7 @@ class RepositoryLoginImpl @Inject constructor(
         val response = remoteDataSource.login(credentials)
 
         if( response.isSuccessful){
+            remoteDataSource.token = response.body().toString()
             return response.body()
 
         }else{

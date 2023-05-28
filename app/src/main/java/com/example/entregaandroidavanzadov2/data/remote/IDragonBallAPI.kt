@@ -18,8 +18,8 @@ interface IDragonBallAPI {
 
 
     @POST("api/data/herolike")
-    suspend fun favouriteHero(@Body favouriteHeroRequestBody: FavouriteHeroRequestBody)
+    suspend fun favouriteHero(@Header("Authorization") token: String,@Body favouriteHeroRequestBody: FavouriteHeroRequestBody)
 
     @POST("api/heros/locations")
-    suspend fun getHeroLocations(getHeroLocationRequestBody: GetHeroLocationRequestBody): List<GetHeroLocationResponse>
+    suspend fun getHeroLocations(@Header("Authorization") token: String, @Body getHeroLocationRequestBody: GetHeroLocationRequestBody): List<GetHeroLocationResponse>
 }
