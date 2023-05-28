@@ -4,7 +4,6 @@ import com.example.entregaandroidavanzadov2.data.local.model.LocalHero
 
 interface ILocalDataSource {
 
-
     suspend fun getHeros(): List<LocalHero>
 
     suspend fun insertHero(localHero: LocalHero)

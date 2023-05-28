@@ -4,6 +4,8 @@ import com.example.entregaandroidavanzadov2.data.Repository
 import com.example.entregaandroidavanzadov2.data.RepositoryImpl
 import com.example.entregaandroidavanzadov2.data.RepositoryLogin
 import com.example.entregaandroidavanzadov2.data.RepositoryLoginImpl
+import com.example.entregaandroidavanzadov2.data.local.ILocalDataSource
+import com.example.entregaandroidavanzadov2.data.local.LocalDataSourceImpl
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSource
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSourceImpl
 import dagger.Binds
@@ -20,6 +22,9 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun bindsLoginRepository(repositoryLoginImpl: RepositoryLoginImpl): RepositoryLogin
+
+    @Binds
+    abstract fun bindsLocalDataSource(localDataSourceImpl: LocalDataSourceImpl): ILocalDataSource
 
     @Binds
     abstract fun bindsRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource

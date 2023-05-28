@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.entregaandroidavanzadov2.SuperHero
 import com.example.entregaandroidavanzadov2.data.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+@HiltViewModel
 class HerosViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
     private val _heros = MutableLiveData<List<SuperHero>>()

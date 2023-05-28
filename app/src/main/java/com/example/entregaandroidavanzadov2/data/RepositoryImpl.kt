@@ -5,8 +5,9 @@ import com.example.entregaandroidavanzadov2.data.MappingClasses.LocalToSuperHero
 import com.example.entregaandroidavanzadov2.data.MappingClasses.RemoteToLocalMapper
 import com.example.entregaandroidavanzadov2.data.local.ILocalDataSource
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSource
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
 
     private val localDataSource: ILocalDataSource,
     private val remoteDataSource: RemoteDataSource,

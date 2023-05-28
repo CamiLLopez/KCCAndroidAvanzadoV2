@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.entregaandroidavanzadov2.R
+import com.example.entregaandroidavanzadov2.databinding.FragmentDetailBinding
 import com.example.entregaandroidavanzadov2.databinding.FragmentListBinding
 
 
@@ -15,7 +16,7 @@ import com.example.entregaandroidavanzadov2.databinding.FragmentListBinding
  */
 class HeroDetailFragment : Fragment() {
 
-    private var _binding: FragmentListBinding? = null
+    private var _binding: FragmentDetailBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,7 +27,7 @@ class HeroDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
 
     }
