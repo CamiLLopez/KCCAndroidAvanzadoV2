@@ -41,11 +41,18 @@ class HeroDetailFragment : Fragment() {
          val heroID = args.heroId
 
         viewModel.getHero(heroID)
+
+        viewModel.heroResult.observe(viewLifecycleOwner){
+
+            binding.heroNameDetail.text = it.name
+            binding.heroNameDetail.text = it.description
+        }
+
         viewModel.getLocationsByHero(heroID)
 
         viewModel.locationResult.observe(viewLifecycleOwner) { success ->
             if (!success) {
-                //TODO LOCATIONS FALILED
+                //TODO LOCATIONS MAP
             } else {
                 //TODO LOCATIONS MAP
             }

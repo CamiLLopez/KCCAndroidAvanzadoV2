@@ -18,6 +18,9 @@ class HerosViewModel @Inject constructor(private val repository: Repository): Vi
     private val _locationResult = MutableLiveData<Boolean>()
     val locationResult: LiveData<Boolean> = _locationResult
 
+    private val _heroResult = MutableLiveData<SuperHero>()
+    val heroResult: LiveData<SuperHero> = _heroResult
+
     private val _heros = MutableLiveData<List<SuperHero>>()
     val heros: LiveData<List<SuperHero>> get() = _heros
 
@@ -46,11 +49,11 @@ class HerosViewModel @Inject constructor(private val repository: Repository): Vi
     fun getHero(heroID: String) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
-                //repository.getHero(heroID)
+                repository.getHero(heroID)
 
             }
             result.let {
-                _locationResult.postValue(result != null)
+                _heroResult.postValue(result)
             }
         }
     }

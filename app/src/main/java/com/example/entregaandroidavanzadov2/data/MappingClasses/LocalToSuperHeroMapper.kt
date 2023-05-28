@@ -11,7 +11,7 @@ class LocalToSuperHeroMapper @Inject constructor() {
         return localHeros.map { mapLocalToSuperHero(it) }
     }
 
-    private fun mapLocalToSuperHero(localHero: LocalHero) : SuperHero {
+     fun mapLocalToSuperHero(localHero: LocalHero) : SuperHero {
         return SuperHero(localHero.id, localHero.name, "", "")
 
     }

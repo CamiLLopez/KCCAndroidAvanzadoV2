@@ -8,6 +8,8 @@ interface Repository {
 
     suspend fun getHeros(): List<SuperHero>
 
-    suspend fun getLocations(heroID: String): List<GetHeroLocationResponse>
+    suspend fun getHero(heroID: String): SuperHero
+
+    suspend fun getLocations(heroID: String): List<GetHeroLocationResponse>?
 
 }

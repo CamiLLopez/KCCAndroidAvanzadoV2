@@ -13,6 +13,8 @@ interface IHeroDAO {
     @Query("SELECT * FROM heros")
     suspend fun getAll(): List<LocalHero>
 
+    @Query("SELECT * FROM heros WHERE heros.id==:idFragment")
+    suspend fun getHeroByID(idFragment: String): LocalHero
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllVararg(vararg users: LocalHero)

@@ -6,6 +6,8 @@ interface ILocalDataSource {
 
     suspend fun getHeros(): List<LocalHero>
 
+    suspend fun getHero(heroID: String): LocalHero
+
     suspend fun insertHero(localHero: LocalHero)
 
     suspend fun insertHeros(localHero: List<LocalHero>)
