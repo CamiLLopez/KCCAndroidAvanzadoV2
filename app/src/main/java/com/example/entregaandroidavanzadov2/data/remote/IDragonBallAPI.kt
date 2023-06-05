@@ -6,6 +6,7 @@ import com.example.entregaandroidavanzadov2.data.remote.Request.GetHeroLocationR
 import com.example.entregaandroidavanzadov2.data.remote.Request.GetHerosRequestBody
 import com.example.entregaandroidavanzadov2.data.remote.Response.GetHeroLocationResponse
 import com.example.entregaandroidavanzadov2.data.remote.Response.GetHerosResponse
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST

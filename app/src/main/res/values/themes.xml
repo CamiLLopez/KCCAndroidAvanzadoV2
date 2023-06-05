@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.EntregaAndroidAvanzadoV2" parent="Base.Theme.EntregaAndroidAvanzadoV2" />
+
+    <style name="SwitchCompatTheme" >
+        <item name="colorControlActivated">@color/orange</item>
+    </style>
 </resources>

@@ -12,7 +12,7 @@ interface RemoteDataSource {
 
     suspend fun login(credentials: String): Response<String>
 
-    suspend fun favouriteHero()
+    suspend fun favouriteHero(heroID: String)
 
     suspend fun getHeroLocations(heroID: String): List<GetHeroLocationResponse>
 }

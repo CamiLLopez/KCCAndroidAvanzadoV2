@@ -49,9 +49,8 @@ class HeroListFragment : Fragment() {
                 )
             )
         }
-        Log.d("TAG", "EN FRAGMENT")
-        binding.herosList.adapter = adapter
 
+        binding.herosList.adapter = adapter
         viewModel.getHeros()
 
         viewModel.heros.observe(viewLifecycleOwner){ heros ->

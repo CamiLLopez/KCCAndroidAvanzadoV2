@@ -22,7 +22,7 @@ class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, 
         return loginAPI.login(credentials)
     }
 
-    override suspend fun favouriteHero() {
+    override suspend fun favouriteHero(heroID: String) {
         return api.favouriteHero("Bearer $token", FavouriteHeroRequestBody(heroID))
     }
 

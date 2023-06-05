@@ -3,12 +3,14 @@ package com.example.entregaandroidavanzadov2.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.entregaandroidavanzadov2.R
 import com.example.entregaandroidavanzadov2.SuperHero
+import com.squareup.picasso.Picasso
 
 class SuperHeroAdapter(private val onClick: (String)-> (Unit)):
     ListAdapter<SuperHero, SuperHeroAdapter.SuperHeroViewHolder>(SuperHeroDiffCallBack()) {
@@ -23,9 +25,15 @@ class SuperHeroAdapter(private val onClick: (String)-> (Unit)):
         holder.bind(getItem(position))
     }
 
+    override fun onViewRecycled(holder: SuperHeroViewHolder) {
+        super.onViewRecycled(holder)
+        holder.clear()
+    }
+
     inner class SuperHeroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val heroName = itemView.findViewById<TextView>(R.id.hero_name)
+        private val heroPhoto = itemView.findViewById<ImageView>(R.id.hero_photo)
 
         private lateinit var hero: SuperHero
 
@@ -39,7 +47,20 @@ class SuperHeroAdapter(private val onClick: (String)-> (Unit)):
         fun bind(hero: SuperHero) {
             this.hero = hero
             heroName.text = hero.name
+            Picasso
+                .get()
+                .load(hero.photo)
+                .resize(1240, 860)
+                .centerInside()
+                .into(heroPhoto)
         }
+
+        fun clear() {
+            Picasso.get().cancelRequest(heroPhoto)
+            heroPhoto.setImageDrawable(null)
+        }
+
+
     }
 
     class SuperHeroDiffCallBack : DiffUtil.ItemCallback<SuperHero>() {

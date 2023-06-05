@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.entregaandroidavanzadov2.data.local.model.LocalHero
 
 @Dao
@@ -22,8 +23,10 @@ interface IHeroDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllList(users: List<LocalHero>)
 
-
+    @Query("UPDATE  heros SET favorite=:favorite  WHERE heros.id==:id")
+    suspend fun  updateHero(id: String, favorite: Boolean)
     @Delete
     suspend fun delete(user: LocalHero)
+
 
 }

@@ -12,7 +12,7 @@ class LocalToSuperHeroMapper @Inject constructor() {
     }
 
      fun mapLocalToSuperHero(localHero: LocalHero) : SuperHero {
-        return SuperHero(localHero.id, localHero.name, "", "")
+        return SuperHero(localHero.id, localHero.name, localHero.favorite, localHero.description, localHero.photo)
 
     }
 }

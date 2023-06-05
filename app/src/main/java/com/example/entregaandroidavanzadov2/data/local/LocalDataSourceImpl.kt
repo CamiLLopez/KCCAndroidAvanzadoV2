@@ -12,6 +12,11 @@ class LocalDataSourceImpl @Inject constructor(private val dao: IHeroDAO): ILocal
     override suspend fun getHero(heroID: String): LocalHero {
         return dao.getHeroByID(heroID)
     }
+
+    override suspend fun updateHero(heroID: String, favorite: Boolean) {
+        return dao.updateHero(heroID, favorite)
+    }
+
     override suspend fun insertHero(localHero: LocalHero){
         dao.insertAllList(listOf(localHero))
     }
