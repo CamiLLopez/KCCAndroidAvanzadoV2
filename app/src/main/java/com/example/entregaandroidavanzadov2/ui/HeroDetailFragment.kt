@@ -12,11 +12,15 @@ import androidx.navigation.fragment.navArgs
 import com.example.entregaandroidavanzadov2.LocationsHero
 import com.example.entregaandroidavanzadov2.R
 import com.example.entregaandroidavanzadov2.databinding.FragmentDetailBinding
+import com.example.entregaandroidavanzadov2.ui.viewModels.HerosDetailViewModel
 import com.example.entregaandroidavanzadov2.ui.viewModels.HerosViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +39,7 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
 
     private val binding get() = _binding!!
-    private val viewModel: HerosViewModel by viewModels()
+    private val viewModel: HerosDetailViewModel by viewModels()
     private val args: HeroDetailFragmentArgs by navArgs()
     private var locations: List<LocationsHero>? = null
     override fun onCreateView(
@@ -94,15 +98,20 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
     private fun updateMap() {
 
         lifecycleScope.launch(Dispatchers.Main){
+
              locations?.map {
+
+
                  val latLng = LatLng(it.latitud, it.longitud)
+
                  mMap.addMarker(
                      MarkerOptions()
                          .position(latLng)
                          .title("I was here!")
                  )
+                mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(latLng, 5.0f))
              }
-      }
+        }
     }
 
     override fun onDestroyView() {

@@ -19,7 +19,7 @@ class RepositoryImpl @Inject constructor(
 
     private val localDataSource: ILocalDataSource,
     private val remoteDataSource: RemoteDataSource,
-    private val  remoteToLocalMapper: RemoteToLocalMapper,
+    private val remoteToLocalMapper: RemoteToLocalMapper,
     private val localToSuperHeroMapper: LocalToSuperHeroMapper,
     private val remoteLocationsToLocationHero: RemoteLocationsToLocationHero
 

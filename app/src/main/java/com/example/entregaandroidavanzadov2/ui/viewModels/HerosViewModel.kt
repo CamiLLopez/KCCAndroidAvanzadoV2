@@ -17,14 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HerosViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
-    private val _locationResult = MutableLiveData<List<LocationsHero>?>()
-    val locationResult: MutableLiveData<List<LocationsHero>?> = _locationResult
-
-    private val _heroResult = MutableLiveData<SuperHero>()
-    val heroResult: LiveData<SuperHero> = _heroResult
-
-    private val _favoriteResult = MutableLiveData<Boolean>()
-    val favoriteResult: LiveData<Boolean> = _favoriteResult
 
     private val _heros = MutableLiveData<List<SuperHero>>()
     val heros: LiveData<List<SuperHero>> get() = _heros
@@ -39,36 +31,4 @@ class HerosViewModel @Inject constructor(private val repository: Repository): Vi
         }
     }
 
-    fun getLocationsByHero(heroID: String){
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO){
-                repository.getLocations(heroID)
-
-                }
-                result.let {
-                    _locationResult.postValue(result)
-                }
-        }
-    }
-
-    fun getHero(heroID: String) {
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO){
-                repository.getHero(heroID)
-
-            }
-            result.let {
-                _heroResult.postValue(result)
-            }
-        }
-    }
-
-    fun markFavoriteHero(heroID: String, favorite: Boolean){
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                repository.markFavoriteHero(heroID, favorite)
-            }
-
-        }
-    }
 }
