@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.Credentials
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,13 +23,9 @@ class LoginViewModel @Inject constructor(private val repository : RepositoryLogi
 
     fun login(user: String, password: String){
 
-        val stringAuthorization = "$user:$password"
-        val encoder = Base64.encodeToString(stringAuthorization.toByteArray(), Base64.DEFAULT)
-        val cleanedString = encoder.replace("\n", "")
-
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
-                repository.login("Basic $cleanedString")
+                repository.login(Credentials.basic(user, password))
             }
             result.let {
                 _loginResult.postValue(result != null)

@@ -11,7 +11,6 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, private val loginAPI: ILoginAPI): RemoteDataSource {
 
-    private lateinit var heroID: String
     override lateinit var token: String
 
     override suspend fun getHeros(): List<GetHerosResponse> {

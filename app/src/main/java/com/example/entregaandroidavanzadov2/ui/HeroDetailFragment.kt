@@ -1,6 +1,7 @@
 package com.example.entregaandroidavanzadov2.ui
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,14 +14,11 @@ import com.example.entregaandroidavanzadov2.LocationsHero
 import com.example.entregaandroidavanzadov2.R
 import com.example.entregaandroidavanzadov2.databinding.FragmentDetailBinding
 import com.example.entregaandroidavanzadov2.ui.viewModels.HerosDetailViewModel
-import com.example.entregaandroidavanzadov2.ui.viewModels.HerosViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,6 +66,8 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
             binding.heroNameDetail.text = hero.name
             binding.heroDetail.text = hero.description
             binding.favoriteHero.isChecked = hero.favorite
+
+            binding.heroDetail.movementMethod = ScrollingMovementMethod.getInstance()
 
             Picasso
                 .get()
@@ -122,6 +122,5 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         updateMap()
-
     }
 }
