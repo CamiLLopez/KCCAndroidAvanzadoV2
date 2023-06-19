@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id("androidx.navigation.safeargs")
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id "kotlin-kapt"
 }
 
@@ -60,13 +61,34 @@ dependencies {
     implementation("androidx.room:room-ktx:2.5.1")
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     kapt("androidx.room:room-compiler:2.5.1")
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:2.45"
     kapt "com.google.dagger:hilt-compiler:2.45"
 
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.2.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("com.google.truth:truth:1.0") //Alternativa: HAMCREST
+    testImplementation("io.mockk:mockk:1.12.2")
+    testImplementation 'com.google.dagger:hilt-android-testing:2.45'
+    kaptTest 'com.google.dagger:hilt-compiler:2.45'
+    testImplementation("org.robolectric:robolectric:4.10.3")
+
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

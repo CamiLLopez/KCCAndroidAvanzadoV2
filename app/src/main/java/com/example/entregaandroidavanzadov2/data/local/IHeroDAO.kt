@@ -9,7 +9,6 @@ import com.example.entregaandroidavanzadov2.data.local.model.LocalHero
 
 @Dao
 interface IHeroDAO {
-
     @Query("SELECT * FROM heros")
     suspend fun getAll(): List<LocalHero>
 
@@ -22,8 +21,10 @@ interface IHeroDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllList(users: List<LocalHero>)
 
-
+    @Query("UPDATE  heros SET favorite=:favorite  WHERE heros.id==:id")
+    suspend fun  updateHero(id: String, favorite: Boolean)
     @Delete
     suspend fun delete(user: LocalHero)
+
 
 }
