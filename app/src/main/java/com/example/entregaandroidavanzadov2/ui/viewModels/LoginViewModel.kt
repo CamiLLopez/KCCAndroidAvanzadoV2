@@ -1,7 +1,5 @@
 package com.example.entregaandroidavanzadov2.ui.viewModels
 
-import android.util.Base64
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,16 +11,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.Credentials
 import javax.inject.Inject
-
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val repository : RepositoryLogin): ViewModel() {
 
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> = _loginResult
-
-
     fun login(user: String, password: String){
-
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
                 repository.login(Credentials.basic(user, password))

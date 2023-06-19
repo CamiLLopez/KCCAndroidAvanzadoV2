@@ -3,8 +3,8 @@ package com.example.entregaandroidavanzadov2.utils
 import com.example.entregaandroidavanzadov2.LocationsHero
 import com.example.entregaandroidavanzadov2.SuperHero
 import com.example.entregaandroidavanzadov2.data.local.model.LocalHero
-import com.example.entregaandroidavanzadov2.data.remote.Response.GetHeroLocationResponse
-import com.example.entregaandroidavanzadov2.data.remote.Response.GetHerosResponse
+import com.example.entregaandroidavanzadov2.data.remote.response.GetHeroLocationResponse
+import com.example.entregaandroidavanzadov2.data.remote.response.GetHerosResponse
 import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.Response
 

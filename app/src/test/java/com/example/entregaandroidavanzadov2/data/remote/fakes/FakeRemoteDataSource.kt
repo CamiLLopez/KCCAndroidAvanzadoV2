@@ -1,11 +1,10 @@
 package com.example.entregaandroidavanzadov2.data.remote.fakes
 
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSource
-import com.example.entregaandroidavanzadov2.data.remote.Response.GetHeroLocationResponse
-import com.example.entregaandroidavanzadov2.data.remote.Response.GetHerosResponse
+import com.example.entregaandroidavanzadov2.data.remote.response.GetHeroLocationResponse
+import com.example.entregaandroidavanzadov2.data.remote.response.GetHerosResponse
 import com.example.entregaandroidavanzadov2.utils.generateHerosResponse
 import com.example.entregaandroidavanzadov2.utils.generateLoginResponse
-import com.example.entregaandroidavanzadov2.utils.generateLoginToken
 import retrofit2.Response
 
 class FakeRemoteDataSource: RemoteDataSource {

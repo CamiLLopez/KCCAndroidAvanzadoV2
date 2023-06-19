@@ -29,13 +29,11 @@ import kotlinx.coroutines.launch
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-
 @AndroidEntryPoint
 class HeroDetailFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentDetailBinding? = null
     private lateinit var mMap: GoogleMap
-
     private val binding get() = _binding!!
     private val viewModel: HerosDetailViewModel by viewModels()
     private val args: HeroDetailFragmentArgs by navArgs()
@@ -48,15 +46,13 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.heros_map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+            mapFragment.getMapAsync(this)
 
-
-         val heroID = args.heroId
+        val heroID = args.heroId
 
         viewModel.getHero(heroID)
         viewModel.getLocationsByHero(heroID)
@@ -76,32 +72,21 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
                 .centerInside()
                 .into(binding.heroNamePhoto)
         }
-
         viewModel.locationResult.observe(viewLifecycleOwner) { success ->
-
-            Log.d("Locations success", success.toString())
             if (success != null) {
-
                 locations = success
                 Log.d("Locations locations", locations.toString())
                 updateMap()
             }
         }
-
         binding.favoriteHero.setOnClickListener{
-
             viewModel.markFavoriteHero(heroID, binding.favoriteHero.isChecked)
         }
-
     }
-
     private fun updateMap() {
 
         lifecycleScope.launch(Dispatchers.Main){
-
              locations?.map {
-
-
                  val latLng = LatLng(it.latitud, it.longitud)
 
                  mMap.addMarker(
@@ -113,12 +98,10 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
              }
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         updateMap()

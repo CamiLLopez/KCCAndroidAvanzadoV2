@@ -5,12 +5,10 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import com.example.entregaandroidavanzadov2.data.local.model.LocalHero
 
 @Dao
 interface IHeroDAO {
-
     @Query("SELECT * FROM heros")
     suspend fun getAll(): List<LocalHero>
 

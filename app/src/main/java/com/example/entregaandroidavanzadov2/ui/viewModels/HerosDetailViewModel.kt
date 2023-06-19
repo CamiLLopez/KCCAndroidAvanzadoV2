@@ -7,13 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.entregaandroidavanzadov2.LocationsHero
 import com.example.entregaandroidavanzadov2.SuperHero
 import com.example.entregaandroidavanzadov2.data.Repository
-import com.example.entregaandroidavanzadov2.data.remote.Response.GetHeroLocationResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
 @HiltViewModel
 class HerosDetailViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
@@ -26,31 +24,26 @@ class HerosDetailViewModel @Inject constructor(private val repository: Repositor
     private val _favoriteResult = MutableLiveData<Boolean>()
     val favoriteResult: LiveData<Boolean> = _favoriteResult
 
-
     fun getLocationsByHero(heroID: String){
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
                 repository.getLocations(heroID)
-
                 }
                 result.let {
                     _locationResult.postValue(result)
                 }
         }
     }
-
     fun getHero(heroID: String) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
                 repository.getHero(heroID)
-
             }
             result.let {
                 _heroResult.postValue(result)
             }
         }
     }
-
     fun markFavoriteHero(heroID: String, favorite: Boolean){
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {

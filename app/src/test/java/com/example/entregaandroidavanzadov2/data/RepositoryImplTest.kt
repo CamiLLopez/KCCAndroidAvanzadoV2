@@ -1,21 +1,16 @@
 package com.example.entregaandroidavanzadov2.data
 
-import com.example.entregaandroidavanzadov2.data.MappingClasses.LocalToSuperHeroMapper
-import com.example.entregaandroidavanzadov2.data.MappingClasses.RemoteLocationsToLocationHero
-import com.example.entregaandroidavanzadov2.data.MappingClasses.RemoteToLocalMapper
-import com.example.entregaandroidavanzadov2.data.local.ILocalDataSource
+import com.example.entregaandroidavanzadov2.data.mappingClasses.LocalToSuperHeroMapper
+import com.example.entregaandroidavanzadov2.data.mappingClasses.RemoteLocationsToLocationHero
+import com.example.entregaandroidavanzadov2.data.mappingClasses.RemoteToLocalMapper
 import com.example.entregaandroidavanzadov2.data.local.fakes.FakeLocalDataSource
 import com.example.entregaandroidavanzadov2.data.remote.RemoteDataSource
 import com.example.entregaandroidavanzadov2.utils.generateHeroLocationsResponse
-import com.example.entregaandroidavanzadov2.utils.generateHerosList
 import com.example.entregaandroidavanzadov2.utils.generateHerosResponse
 import com.google.common.truth.Truth
-import io.mockk.Runs
 import io.mockk.coEvery
-import io.mockk.just
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before

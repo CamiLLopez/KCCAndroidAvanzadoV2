@@ -1,5 +1,4 @@
 package com.example.entregaandroidavanzadov2
-
 data class SuperHero(
 
     val id: String,
