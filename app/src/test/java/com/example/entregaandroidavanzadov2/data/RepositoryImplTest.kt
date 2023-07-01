@@ -88,8 +88,4 @@ class RepositoryImplTest {
 
         Truth.assertThat(heroLocations).isNull()
     }
-
-    @After
-    fun tearDown() {
-    }
 }

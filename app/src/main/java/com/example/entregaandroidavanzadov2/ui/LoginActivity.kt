@@ -20,14 +20,18 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.emailField.doAfterTextChanged {
-            binding.loginButton.isEnabled =
-                binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
-        }
 
-        binding.passwordField.doAfterTextChanged {
-            binding.loginButton.isEnabled =
-                binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+        with(binding){
+
+            emailField.doAfterTextChanged {
+                binding.loginButton.isEnabled =
+                    binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+            }
+
+            passwordField.doAfterTextChanged {
+                binding.loginButton.isEnabled =
+                    binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+            }
         }
 
         binding.loginButton.setOnClickListener {
