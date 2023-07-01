@@ -18,7 +18,6 @@ class FakeLocalDataSource: ILocalDataSource {
             return  generateLocalHeroList(16)
         }
     }
-
     override suspend fun getHero(heroID: String): LocalHero {
 
         return generateLocalHero()

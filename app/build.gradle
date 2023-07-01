@@ -62,12 +62,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
     testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
     kapt("androidx.room:room-compiler:2.5.1")
 
     // Dagger Hilt

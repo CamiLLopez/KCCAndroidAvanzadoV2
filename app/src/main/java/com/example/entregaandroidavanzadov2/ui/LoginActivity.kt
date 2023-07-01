@@ -1,6 +1,7 @@
 package com.example.entregaandroidavanzadov2.ui
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -19,14 +20,18 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.emailField.doAfterTextChanged {
-            binding.loginButton.isEnabled =
-                binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
-        }
 
-        binding.passwordField.doAfterTextChanged {
-            binding.loginButton.isEnabled =
-                binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+        with(binding){
+
+            emailField.doAfterTextChanged {
+                binding.loginButton.isEnabled =
+                    binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+            }
+
+            passwordField.doAfterTextChanged {
+                binding.loginButton.isEnabled =
+                    binding.emailField.text.isNotEmpty() && binding.passwordField.text.isNotEmpty()
+            }
         }
 
         binding.loginButton.setOnClickListener {

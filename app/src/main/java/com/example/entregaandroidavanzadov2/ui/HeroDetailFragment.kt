@@ -1,5 +1,6 @@
 package com.example.entregaandroidavanzadov2.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
@@ -46,6 +47,7 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
+    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager
@@ -59,9 +61,10 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
 
         viewModel.heroResult.observe(viewLifecycleOwner){hero->
 
-            binding.heroNameDetail.text = hero.name
-            binding.heroDetail.text = hero.description
-            binding.favoriteHero.isChecked = hero.favorite
+        with(binding){
+            heroNameDetail.text = hero.name
+            heroDetail.text = hero.description
+            favoriteHero.isChecked = hero.favorite
 
             binding.heroDetail.movementMethod = ScrollingMovementMethod.getInstance()
 
@@ -70,7 +73,9 @@ class HeroDetailFragment : Fragment(), OnMapReadyCallback {
                 .load(hero.photo)
                 .resize(1040, 600)
                 .centerInside()
-                .into(binding.heroNamePhoto)
+                .into(heroNamePhoto)
+        }
+
         }
         viewModel.locationResult.observe(viewLifecycleOwner) { success ->
             if (success != null) {

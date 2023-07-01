@@ -1,10 +1,8 @@
 package com.example.entregaandroidavanzadov2.data.remote.fakes
 
-import com.google.common.io.Resources
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
-import java.io.File
 import java.net.HttpURLConnection
 import java.util.concurrent.TimeUnit
 
